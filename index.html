@@ -15,14 +15,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black: #08070c;          /* Cyber Pitch Dark */
-  --white: #f5f0e6;          /* Creamish Text/Foreground */
-  --red: #e0c38c;            /* Neon Gold Accent */
-  --red-dim: #c4a468;        /* Secondary Creamish Accent */
-  --cyber-red: #ff2a5f;      /* Cyberpunk Crimson Glow */
-  --gray: #121018;           /* Dark Card Background */
-  --gray-mid: #252033;      /* Dark Border Colors */
-  --gray-text: #a49cb0;      /* Muted Cream-Gray Text */
+  --black: #050811;          /* Deep Cyber Blue-Black */
+  --white: #ffffff;          /* Pure White Foreground */
+  --cyber-blue: #00d2ff;     /* Vibrant Neon Blue */
+  --cyber-red: #ff0055;      /* Hot Crimson Red Glow */
+  --cyber-yellow: #ffe600;   /* Bright Light Electric Yellow */
+  --gray: #0b1120;           /* Dark Blue Card Background */
+  --gray-mid: #1a233a;      /* Dark Blue Border Colors */
+  --gray-text: #8fa0c0;      /* Muted Blue-Gray Text */
   --font-display: 'Anton', sans-serif;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Syne', sans-serif;
@@ -44,13 +44,13 @@ body {
   position: fixed;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--cyber-red);
+  border: 1px solid var(--cyber-blue);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
   z-index: 9999;
-  box-shadow: 0 0 15px var(--cyber-red);
+  box-shadow: 0 0 15px var(--cyber-blue);
 }
 
 /* ─── DAMASCUS BACKGROUND ─── */
@@ -64,9 +64,9 @@ body {
 #progress {
   position: fixed; top: 0; left: 0;
   height: 3px; width: 0%;
-  background: linear-gradient(90deg, var(--cyber-red), var(--red));
+  background: linear-gradient(90deg, var(--cyber-red), var(--cyber-yellow), var(--cyber-blue));
   z-index: 1000;
-  box-shadow: 0 0 15px var(--cyber-red);
+  box-shadow: 0 0 15px var(--cyber-blue);
   transition: width 0.05s linear;
 }
 
@@ -78,9 +78,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px 48px;
-  background: rgba(8, 7, 12, 0.85);
+  background: rgba(5, 8, 17, 0.85);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 42, 95, 0.2);
+  border-bottom: 1px solid rgba(0, 210, 255, 0.25);
 }
 .nav-left { display: flex; align-items: center; gap: 20px; }
 .nav-logo {
@@ -90,28 +90,28 @@ nav {
   color: var(--white);
   text-decoration: none;
 }
-.nav-logo span { color: var(--cyber-red); text-shadow: 0 0 10px var(--cyber-red); }
+.nav-logo span { color: var(--cyber-yellow); text-shadow: 0 0 10px var(--cyber-yellow); }
 
 /* Live GTA/Roblox Status Badge */
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 42, 95, 0.1);
-  border: 1px solid rgba(255, 42, 95, 0.3);
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.4);
   padding: 4px 12px;
   border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--white);
+  color: var(--cyber-yellow);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .status-dot {
   width: 6px; height: 6px;
-  background: #00ffaa;
+  background: var(--cyber-red);
   border-radius: 50%;
-  box-shadow: 0 0 8px #00ffaa;
+  box-shadow: 0 0 8px var(--cyber-red);
   animation: pulse 1.8s infinite;
 }
 @keyframes pulse {
@@ -129,7 +129,7 @@ nav {
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.nav-links a:hover { color: var(--red); text-shadow: 0 0 10px var(--red); }
+.nav-links a:hover { color: var(--cyber-yellow); text-shadow: 0 0 10px var(--cyber-yellow); }
 
 /* ─── HERO ─── */
 .hero {
@@ -149,22 +149,23 @@ nav {
   width: 100%; height: 100%;
   object-fit: cover;
   z-index: 0;
-  filter: brightness(0.4) contrast(1.15) saturate(1.2);
+  filter: brightness(0.35) contrast(1.2) saturate(1.3);
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 80% 20%, rgba(255, 42, 95, 0.15), transparent 40%),
-    linear-gradient(to top, rgba(8,7,12,1) 0%, rgba(8,7,12,0.4) 50%, rgba(8,7,12,0.85) 100%);
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 85, 0.2), transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.2), transparent 45%),
+    linear-gradient(to top, rgba(5,8,17,1) 0%, rgba(5,8,17,0.4) 50%, rgba(5,8,17,0.85) 100%);
   z-index: 1;
 }
 
-/* GTA V / Cyber HUD Corner Brackets & Grid */
+/* HUD Corner Brackets */
 .hero-hud {
   position: absolute;
   inset: 20px;
-  border: 1px solid rgba(224, 195, 140, 0.08);
+  border: 1px solid rgba(0, 210, 255, 0.12);
   pointer-events: none;
   z-index: 2;
 }
@@ -174,13 +175,15 @@ nav {
   top: -1px; left: -1px; width: 20px; height: 20px;
   border-top: 3px solid var(--cyber-red);
   border-left: 3px solid var(--cyber-red);
+  box-shadow: 0 0 10px var(--cyber-red);
 }
 .hero-hud::after {
   content: '';
   position: absolute;
   bottom: -1px; right: -1px; width: 20px; height: 20px;
-  border-bottom: 3px solid var(--red);
-  border-right: 3px solid var(--red);
+  border-bottom: 3px solid var(--cyber-yellow);
+  border-right: 3px solid var(--cyber-yellow);
+  box-shadow: 0 0 10px var(--cyber-yellow);
 }
 
 .hero-tag {
@@ -188,7 +191,7 @@ nav {
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--cyber-yellow);
   margin-bottom: 16px;
   position: relative;
   z-index: 3;
@@ -200,8 +203,8 @@ nav {
   content: '';
   display: inline-block;
   width: 40px; height: 1px;
-  background: var(--cyber-red);
-  box-shadow: 0 0 10px var(--cyber-red);
+  background: var(--cyber-blue);
+  box-shadow: 0 0 10px var(--cyber-blue);
 }
 
 .hero-name {
@@ -219,16 +222,16 @@ nav {
   to   { opacity: 1; transform: translateY(0); }
 }
 .hero-name .accent { 
-  color: var(--red); 
-  text-shadow: 0 0 25px rgba(224, 195, 140, 0.4), 0 0 50px rgba(255, 42, 95, 0.2);
+  color: var(--cyber-blue); 
+  text-shadow: 0 0 25px rgba(0, 210, 255, 0.6), 0 0 50px rgba(255, 0, 85, 0.4);
 }
 
 /* ─── MARQUEE ─── */
 .marquee-wrap {
-  background: linear-gradient(90deg, var(--red), var(--cyber-red));
+  background: linear-gradient(90deg, var(--cyber-blue), var(--cyber-yellow), var(--cyber-red));
   overflow: hidden;
   padding: 14px 0;
-  box-shadow: 0 0 30px rgba(255, 42, 95, 0.35);
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
   position: relative;
   z-index: 10;
 }
@@ -247,7 +250,7 @@ nav {
   padding: 0 32px;
 }
 .marquee-track .dot {
-  color: rgba(8, 7, 12, 0.6);
+  color: rgba(5, 8, 17, 0.7);
   padding: 0;
 }
 @keyframes marquee {
@@ -262,20 +265,20 @@ nav {
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--cyber-red);
+  color: var(--cyber-yellow);
   margin-bottom: 48px;
   display: flex;
   align-items: center;
   gap: 12px;
-  text-shadow: 0 0 8px rgba(255, 42, 95, 0.4);
+  text-shadow: 0 0 8px rgba(255, 230, 0, 0.5);
 }
 .section-label::after {
   content: '';
   flex: 1;
   max-width: 100px;
   height: 1px;
-  background: var(--cyber-red);
-  box-shadow: 0 0 8px var(--cyber-red);
+  background: var(--cyber-blue);
+  box-shadow: 0 0 8px var(--cyber-blue);
 }
 
 /* ─── ABOUT ─── */
@@ -295,7 +298,10 @@ nav {
   color: var(--white);
   margin-bottom: 32px;
 }
-.about-left .big-text .accent { color: var(--red); }
+.about-left .big-text .accent { 
+  color: var(--cyber-red); 
+  text-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+}
 
 /* STATS CARDS */
 .stats-grid {
@@ -305,20 +311,20 @@ nav {
   margin-bottom: 48px;
 }
 .stat-item {
-  background: rgba(18, 16, 24, 0.85);
+  background: rgba(11, 17, 32, 0.85);
   backdrop-filter: blur(12px);
   padding: 32px 24px;
   text-align: center;
   position: relative;
   border: 1px solid var(--gray-mid);
-  border-left: 3px solid var(--cyber-red);
+  border-left: 3px solid var(--cyber-blue);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .stat-item:hover {
-  border-color: var(--red);
-  border-left-color: var(--red);
+  border-color: var(--cyber-yellow);
+  border-left-color: var(--cyber-yellow);
   transform: translateY(-6px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(255, 42, 95, 0.2);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0, 210, 255, 0.3);
 }
 .stat-num {
   font-family: var(--font-display);
@@ -344,19 +350,19 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 22px 28px;
-  background: rgba(18, 16, 24, 0.7);
+  background: rgba(11, 17, 32, 0.7);
   backdrop-filter: blur(10px);
   border: 1px solid var(--gray-mid);
-  border-right: 3px solid var(--red);
+  border-right: 3px solid var(--cyber-red);
   margin-bottom: 14px;
   transition: all 0.3s ease;
 }
 .skill-row:hover {
-  border-color: var(--cyber-red);
-  border-right-color: var(--cyber-red);
-  background: rgba(255, 42, 95, 0.08);
+  border-color: var(--cyber-blue);
+  border-right-color: var(--cyber-blue);
+  background: rgba(0, 210, 255, 0.08);
   transform: translateX(8px);
-  box-shadow: 0 0 20px rgba(255, 42, 95, 0.2);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.25);
 }
 .skill-name {
   font-family: var(--font-serif);
@@ -370,18 +376,20 @@ nav {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--black);
   padding: 5px 12px;
-  border: 1px solid rgba(224, 195, 140, 0.4);
-  background: rgba(224, 195, 140, 0.08);
+  font-weight: 700;
+  border: 1px solid var(--cyber-yellow);
+  background: var(--cyber-yellow);
+  box-shadow: 0 0 10px rgba(255, 230, 0, 0.3);
 }
 
 /* ─── DIVIDER ─── */
 .divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--cyber-red), transparent);
+  background: linear-gradient(90deg, transparent, var(--cyber-blue), var(--cyber-red), transparent);
   margin: 0 48px;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* ─── CONTACT ─── */
@@ -397,7 +405,10 @@ nav {
   color: var(--white);
   margin-bottom: 48px;
 }
-.contact-big .accent { color: var(--red); text-shadow: 0 0 20px rgba(224, 195, 140, 0.3); }
+.contact-big .accent { 
+  color: var(--cyber-yellow); 
+  text-shadow: 0 0 25px rgba(255, 230, 0, 0.4); 
+}
 
 .contact-row {
   display: flex;
@@ -417,7 +428,7 @@ nav {
   color: var(--gray-text);
   text-decoration: none;
   padding: 14px 24px;
-  background: rgba(18, 16, 24, 0.8);
+  background: rgba(11, 17, 32, 0.8);
   border: 1px solid var(--gray-mid);
   transition: all 0.3s ease;
   display: flex;
@@ -426,9 +437,9 @@ nav {
 }
 .contact-link:hover { 
   color: var(--white); 
-  border-color: var(--cyber-red);
+  border-color: var(--cyber-blue);
   transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(255, 42, 95, 0.3);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(0, 210, 255, 0.4);
 }
 .contact-link[href*="discord"]:hover { 
   border-color: #5865F2; 
@@ -447,9 +458,9 @@ nav {
   display: inline-block;
 }
 .contact-email:hover { 
-  color: var(--red); 
+  color: var(--cyber-blue); 
   transform: translateX(6px);
-  text-shadow: 0 0 20px rgba(224, 195, 140, 0.4);
+  text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
 }
 
 /* ─── FOOTER ─── */
@@ -461,7 +472,7 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  background: rgba(8, 7, 12, 0.95);
+  background: rgba(5, 8, 17, 0.95);
 }
 footer p {
   font-family: var(--font-mono);
@@ -640,7 +651,7 @@ document.addEventListener('mousemove', e => {
 document.querySelectorAll('a, button, .stat-item, .skill-row').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cursor.style.transform = 'translate(-50%, -50%) scale(2.2)';
-    cursor.style.background = 'rgba(255, 42, 95, 0.15)';
+    cursor.style.background = 'rgba(0, 210, 255, 0.2)';
   });
   el.addEventListener('mouseleave', () => {
     cursor.style.transform = 'translate(-50%, -50%) scale(1)';
@@ -667,7 +678,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* DAMASCUS BACKGROUND */
+/* DAMASCUS BACKGROUND (NEW BLUE/RED/YELLOW SHADERS) */
 (function() {
   const canvas = document.getElementById('damascus-bg');
   const ctx = canvas.getContext('2d');
@@ -705,9 +716,10 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         const v = band1 * 0.55 + band2 * 0.45;
         const lineIntensity = Math.pow(v, 2.5);
 
-        const r = 10 + lineIntensity * (224 - 10); 
-        const g = 8 + lineIntensity * (195 - 8); 
-        const b = 15 + lineIntensity * (140 - 15); 
+        // Gradient shifting between Blue, Red & Yellow
+        const r = 5 + lineIntensity * (0 + Math.sin(t) * 120 + 100); 
+        const g = 8 + lineIntensity * (150 + Math.cos(t) * 105); 
+        const b = 17 + lineIntensity * (255 - Math.sin(t) * 100); 
 
         const i = (y * W + x) * 4;
         d[i]   = r;
