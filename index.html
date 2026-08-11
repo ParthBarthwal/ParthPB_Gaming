@@ -15,13 +15,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black: #0f0e13;         /* Deep Dark Background */
-  --white: #f5f0e6;         /* Creamish Text/Foreground */
-  --red: #e0c38c;           /* Warm Creamish Gold Accent */
-  --red-dim: #c4a468;       /* Secondary Creamish Accent */
-  --gray: #181620;          /* Dark Card Background */
+  --black: #0f0e13;          /* Deep Dark Background */
+  --white: #f5f0e6;          /* Creamish Text/Foreground */
+  --red: #e0c38c;            /* Warm Creamish Gold Accent */
+  --red-dim: #c4a468;        /* Secondary Creamish Accent */
+  --gray: #181620;           /* Dark Card Background */
   --gray-mid: #2a2636;      /* Dark Border Colors */
-  --gray-text: #a49cb0;     /* Muted Cream-Gray Text */
+  --gray-text: #a49cb0;      /* Muted Cream-Gray Text */
   --font-display: 'Anton', sans-serif;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Syne', sans-serif;
@@ -163,29 +163,6 @@ nav {
   max-width: 340px;
   font-weight: 300;
 }
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 28px;
-  background: transparent;
-  border: 1px solid rgba(245,240,230,0.25);
-  color: var(--white);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
-}
-.hero-cta:hover {
-  background: var(--red);
-  border-color: var(--red);
-  color: var(--black);
-  transform: translateY(-2px);
-}
-.hero-cta svg { transition: transform 0.2s; }
-.hero-cta:hover svg { transform: translateX(4px); }
 
 /* ─── MARQUEE ─── */
 .marquee-wrap {
@@ -326,174 +303,6 @@ nav {
   margin: 0 48px;
 }
 
-/* ─── PROJECTS ─── */
-#projects {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-#projects .section-label { margin-bottom: 60px; }
-
-.work-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 40px;
-  align-items: start;
-}
-.work-list { border-top: 1px solid var(--gray-mid); }
-
-.work-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--gray-mid);
-  position: relative;
-  transition: padding-left 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-.work-item::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 0;
-  background: var(--red);
-  opacity: 0.12;
-  transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-.work-item:hover::before { width: 100%; }
-.work-item.active::before { width: 100%; opacity: 0.08; }
-.work-item:hover { padding-left: 16px; }
-.work-item.active { padding-left: 16px; }
-
-.work-item-left { display: flex; align-items: center; gap: 20px; }
-.work-num {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--gray-text);
-  letter-spacing: 0.1em;
-  min-width: 24px;
-}
-.work-item.active .work-num { color: var(--red); }
-.work-title {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 2.8vw, 34px);
-  letter-spacing: 0.02em;
-  color: var(--gray-text);
-  transition: color 0.2s;
-  line-height: 1;
-}
-.work-item:hover .work-title,
-.work-item.active .work-title { color: var(--white); }
-
-.work-meta {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--gray-text);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.work-item:hover .work-meta,
-.work-item.active .work-meta { opacity: 1; }
-
-.work-arrow {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  color: var(--red);
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: opacity 0.2s, transform 0.3s;
-  text-decoration: none;
-}
-.work-item:hover .work-arrow,
-.work-item.active .work-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.work-preview {
-  position: sticky;
-  top: 100px;
-}
-.work-preview-inner {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  background: var(--gray);
-  border: 1px solid var(--gray-mid);
-}
-.work-preview-inner iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  border: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-.work-preview-inner iframe.active {
-  opacity: 1;
-  pointer-events: none;
-}
-.work-preview-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  transition: opacity 0.3s;
-}
-.work-preview-placeholder.hidden { opacity: 0; }
-.work-preview-placeholder span {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gray-text);
-}
-.preview-line {
-  width: 32px; height: 1px;
-  background: var(--gray-mid);
-}
-.work-preview-caption {
-  margin-top: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.work-preview-caption-title {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--gray-text);
-  transition: color 0.3s;
-}
-.work-preview-caption-title.visible { color: var(--white); }
-.work-open {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--red);
-  text-decoration: none;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.work-open.visible { opacity: 1; }
-
-@media (max-width: 768px) {
-  .work-layout { grid-template-columns: 1fr; }
-  .work-preview {
-    display: block;
-    position: relative;
-    margin-top: 20px;
-  }
-  .work-preview-inner { height: 220px; }
-}
-
 /* ─── CONTACT ─── */
 #contact {
   max-width: 1200px;
@@ -615,12 +424,6 @@ footer p {
   <div class="hero-name">PARTH<br>PB<span class="accent">GAMING</span></div>
   <div class="hero-bottom">
     <p class="hero-sub">Crafting fast-paced gaming edits that hit different — from clutch montages to full creator packages.</p>
-    <a href="#projects" class="hero-cta">
-      View My Work
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
   </div>
 </div>
 
@@ -643,8 +446,6 @@ footer p {
   <div class="about-left reveal">
     <div class="section-label">About</div>
     <div class="big-text">THINGS.<br>THAT.<br><span class="accent">HARD.</span></div>
-    <p class="about-body">
-
     <div class="stats-grid">
       <div class="stat-item">
         <span class="stat-num">1</span>
@@ -666,7 +467,6 @@ footer p {
 </section>
 
 <div class="divider"></div>
-
 
 <!-- CONTACT -->
 <section class="section" id="contact">
@@ -701,7 +501,7 @@ footer p {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515..."/>
         </svg>
-         Discord
+        Discord
       </a>
     </div>
   </div>
@@ -737,116 +537,6 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
 }, 1500);
-
-/* WORK SECTION — hover to play */
-(function() {
-  const projects = {
-    val:   { id: 'd0qvLlFEEH8', title: 'Valorant Montage', url: 'https://www.youtube.com/watch?v=d0qvLlFEEH8' },
-    proj2: { id: '4ZcBnbLWxvU', title: 'Valorant Montage(old)', url: 'https://www.youtube.com/watch?v=4ZcBnbLWxvU' },
-    proj3: { video: 'montage.mp4', title: 'Project 3', url: 'montage.mp4' },
-  };
-
-  const previewWrap = document.querySelector('.work-preview-inner');
-  const placeholder = document.getElementById('work-placeholder');
-  const caption     = document.getElementById('preview-caption');
-  const openLink    = document.getElementById('preview-link');
-  const iframes     = {};
-  let currentId     = null;
-  let hoverTimer    = null;
-
-  if (previewWrap) {
-    Object.entries(projects).forEach(([key, p]) => {
-      if (p.id) {
-        const f = document.createElement('iframe');
-        f.src = `https://www.youtube.com/embed/${p.id}?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${p.id}`;
-        f.allow = 'autoplay; encrypted-media';
-        f.setAttribute('allowfullscreen', '');
-        previewWrap.appendChild(f);
-        iframes[key] = f;
-      }
-
-      if (p.video) {
-        const v = document.createElement('video');
-        v.src = p.video;
-        v.muted = true;
-        v.loop = true;
-        v.playsInline = true;
-        v.style.position = "absolute";
-        v.style.inset = "0";
-        v.style.width = "100%";
-        v.style.height = "100%";
-        v.style.objectFit = "cover";
-        v.style.opacity = "0";
-        v.style.transition = "opacity 0.4s ease";
-
-        previewWrap.appendChild(v);
-        iframes[key] = v;
-      }
-    });
-  }
-
-  function activate(key) {
-    if (currentId === key) return;
-    currentId = key;
-
-    const p = projects[key];
-
-    Object.entries(iframes).forEach(([k, el]) => {
-      if (k === key) {
-        el.style.opacity = "1";
-        if (el.tagName === "VIDEO") {
-          el.currentTime = 0;
-          el.play();
-        }
-        if (el.tagName === "IFRAME") {
-          const base = el.src.split('?')[0];
-          el.src = `${base}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${projects[key].id}`;
-        }
-      } else {
-        el.style.opacity = "0";
-        if (el.tagName === "VIDEO") {
-          el.pause();
-        }
-        if (el.tagName === "IFRAME") {
-          const base = el.src.split('?')[0];
-          const pid = projects[k]?.id;
-          if (pid) {
-            el.src = `${base}?autoplay=0&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${pid}`;
-          }
-        }
-      }
-    });
-
-    if (placeholder) placeholder.classList.toggle('hidden', !!p.id);
-    if (caption) {
-      caption.textContent = p.title;
-      caption.classList.toggle('visible', true);
-    }
-    if (openLink) {
-      openLink.href = p.url;
-      openLink.classList.toggle('visible', p.url !== '#');
-    }
-
-    document.querySelectorAll('.work-item').forEach(el => {
-      el.classList.toggle('active', el.dataset.id === key);
-    });
-  }
-
-  document.querySelectorAll('.work-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      clearTimeout(hoverTimer);
-      hoverTimer = setTimeout(() => activate(item.dataset.id), 120);
-    });
-
-    item.addEventListener('click', () => {
-      activate(item.dataset.id);
-    });
-  });
-
-  if (document.querySelector('.work-item')) {
-    activate('val');
-  }
-})();
 
 /* DAMASCUS BACKGROUND — DARK BASE WITH CREAMISH LINES */
 (function() {
