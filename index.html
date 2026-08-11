@@ -15,12 +15,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black: #0f0e13;          /* Deep Dark Background */
+  --black: #08070c;          /* Cyber Pitch Dark */
   --white: #f5f0e6;          /* Creamish Text/Foreground */
-  --red: #e0c38c;            /* Warm Creamish Gold Accent */
+  --red: #e0c38c;            /* Neon Gold Accent */
   --red-dim: #c4a468;        /* Secondary Creamish Accent */
-  --gray: #181620;           /* Dark Card Background */
-  --gray-mid: #2a2636;      /* Dark Border Colors */
+  --cyber-red: #ff2a5f;      /* Cyberpunk Crimson Glow */
+  --gray: #121018;           /* Dark Card Background */
+  --gray-mid: #252033;      /* Dark Border Colors */
   --gray-text: #a49cb0;      /* Muted Cream-Gray Text */
   --font-display: 'Anton', sans-serif;
   --font-serif: 'Cormorant Garamond', serif;
@@ -38,18 +39,18 @@ body {
   cursor: default;
 }
 
-/* ─── CUSTOM CURSOR ─── */
+/* ─── CUSTOM CYBER CURSOR ─── */
 #custom-cursor {
   position: fixed;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--red);
+  border: 1px solid var(--cyber-red);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
   z-index: 9999;
-  box-shadow: 0 0 15px rgba(224, 195, 140, 0.4);
+  box-shadow: 0 0 15px var(--cyber-red);
 }
 
 /* ─── DAMASCUS BACKGROUND ─── */
@@ -63,9 +64,9 @@ body {
 #progress {
   position: fixed; top: 0; left: 0;
   height: 3px; width: 0%;
-  background: linear-gradient(90deg, var(--red-dim), var(--red));
+  background: linear-gradient(90deg, var(--cyber-red), var(--red));
   z-index: 1000;
-  box-shadow: 0 0 12px var(--red);
+  box-shadow: 0 0 15px var(--cyber-red);
   transition: width 0.05s linear;
 }
 
@@ -77,9 +78,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px 48px;
-  background: rgba(15, 14, 19, 0.75);
+  background: rgba(8, 7, 12, 0.85);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(224, 195, 140, 0.12);
+  border-bottom: 1px solid rgba(255, 42, 95, 0.2);
 }
 .nav-left { display: flex; align-items: center; gap: 20px; }
 .nav-logo {
@@ -89,33 +90,33 @@ nav {
   color: var(--white);
   text-decoration: none;
 }
-.nav-logo span { color: var(--red); }
+.nav-logo span { color: var(--cyber-red); text-shadow: 0 0 10px var(--cyber-red); }
 
-/* Live Status Badge */
+/* Live GTA/Roblox Status Badge */
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(224, 195, 140, 0.08);
-  border: 1px solid rgba(224, 195, 140, 0.25);
+  background: rgba(255, 42, 95, 0.1);
+  border: 1px solid rgba(255, 42, 95, 0.3);
   padding: 4px 12px;
-  border-radius: 20px;
+  border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--red);
+  color: var(--white);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .status-dot {
   width: 6px; height: 6px;
-  background: #00ff88;
+  background: #00ffaa;
   border-radius: 50%;
-  box-shadow: 0 0 8px #00ff88;
-  animation: pulse 2s infinite;
+  box-shadow: 0 0 8px #00ffaa;
+  animation: pulse 1.8s infinite;
 }
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 0.3; transform: scale(0.8); }
 }
 
 .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -128,7 +129,7 @@ nav {
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.nav-links a:hover { color: var(--red); text-shadow: 0 0 8px rgba(224, 195, 140, 0.4); }
+.nav-links a:hover { color: var(--red); text-shadow: 0 0 10px var(--red); }
 
 /* ─── HERO ─── */
 .hero {
@@ -148,24 +149,38 @@ nav {
   width: 100%; height: 100%;
   object-fit: cover;
   z-index: 0;
-  filter: brightness(0.35) saturate(1.1);
+  filter: brightness(0.4) contrast(1.15) saturate(1.2);
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15,14,19,1) 0%, rgba(15,14,19,0.3) 50%, rgba(15,14,19,0.85) 100%);
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(255, 42, 95, 0.15), transparent 40%),
+    linear-gradient(to top, rgba(8,7,12,1) 0%, rgba(8,7,12,0.4) 50%, rgba(8,7,12,0.85) 100%);
   z-index: 1;
 }
 
-/* Cyber Overlay Pattern */
-.hero-grid {
+/* GTA V / Cyber HUD Corner Brackets & Grid */
+.hero-hud {
   position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(224, 195, 140, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(224, 195, 140, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: 1;
+  inset: 20px;
+  border: 1px solid rgba(224, 195, 140, 0.08);
   pointer-events: none;
+  z-index: 2;
+}
+.hero-hud::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px; width: 20px; height: 20px;
+  border-top: 3px solid var(--cyber-red);
+  border-left: 3px solid var(--cyber-red);
+}
+.hero-hud::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px; width: 20px; height: 20px;
+  border-bottom: 3px solid var(--red);
+  border-right: 3px solid var(--red);
 }
 
 .hero-tag {
@@ -176,7 +191,7 @@ nav {
   color: var(--red);
   margin-bottom: 16px;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -185,8 +200,8 @@ nav {
   content: '';
   display: inline-block;
   width: 40px; height: 1px;
-  background: var(--red);
-  box-shadow: 0 0 8px var(--red);
+  background: var(--cyber-red);
+  box-shadow: 0 0 10px var(--cyber-red);
 }
 
 .hero-name {
@@ -196,7 +211,7 @@ nav {
   letter-spacing: 0.02em;
   color: var(--white);
   position: relative;
-  z-index: 2;
+  z-index: 3;
   animation: heroSlide 1s cubic-bezier(0.16,1,0.3,1) both;
 }
 @keyframes heroSlide {
@@ -205,17 +220,17 @@ nav {
 }
 .hero-name .accent { 
   color: var(--red); 
-  text-shadow: 0 0 30px rgba(224, 195, 140, 0.35);
+  text-shadow: 0 0 25px rgba(224, 195, 140, 0.4), 0 0 50px rgba(255, 42, 95, 0.2);
 }
 
 /* ─── MARQUEE ─── */
 .marquee-wrap {
-  background: var(--red);
+  background: linear-gradient(90deg, var(--red), var(--cyber-red));
   overflow: hidden;
   padding: 14px 0;
-  border-top: 1px solid var(--red);
-  border-bottom: 1px solid rgba(15,14,19,0.1);
-  box-shadow: 0 0 30px rgba(224, 195, 140, 0.3);
+  box-shadow: 0 0 30px rgba(255, 42, 95, 0.35);
+  position: relative;
+  z-index: 10;
 }
 .marquee-track {
   display: flex;
@@ -232,7 +247,7 @@ nav {
   padding: 0 32px;
 }
 .marquee-track .dot {
-  color: rgba(15,14,19,0.5);
+  color: rgba(8, 7, 12, 0.6);
   padding: 0;
 }
 @keyframes marquee {
@@ -241,25 +256,26 @@ nav {
 }
 
 /* ─── SECTIONS ─── */
-.section { padding: 120px 48px; }
+.section { padding: 120px 48px; position: relative; }
 .section-label {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--cyber-red);
   margin-bottom: 48px;
   display: flex;
   align-items: center;
   gap: 12px;
+  text-shadow: 0 0 8px rgba(255, 42, 95, 0.4);
 }
 .section-label::after {
   content: '';
   flex: 1;
   max-width: 100px;
   height: 1px;
-  background: var(--red);
-  opacity: 0.5;
+  background: var(--cyber-red);
+  box-shadow: 0 0 8px var(--cyber-red);
 }
 
 /* ─── ABOUT ─── */
@@ -289,19 +305,20 @@ nav {
   margin-bottom: 48px;
 }
 .stat-item {
-  background: rgba(24, 22, 32, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(18, 16, 24, 0.85);
+  backdrop-filter: blur(12px);
   padding: 32px 24px;
   text-align: center;
   position: relative;
   border: 1px solid var(--gray-mid);
-  border-radius: 6px;
+  border-left: 3px solid var(--cyber-red);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .stat-item:hover {
   border-color: var(--red);
+  border-left-color: var(--red);
   transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px rgba(224, 195, 140, 0.15);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(255, 42, 95, 0.2);
 }
 .stat-num {
   font-family: var(--font-display);
@@ -327,18 +344,19 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 22px 28px;
-  background: rgba(24, 22, 32, 0.5);
-  backdrop-filter: blur(8px);
+  background: rgba(18, 16, 24, 0.7);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--gray-mid);
-  border-radius: 6px;
+  border-right: 3px solid var(--red);
   margin-bottom: 14px;
   transition: all 0.3s ease;
 }
 .skill-row:hover {
-  border-color: var(--red);
-  background: rgba(224, 195, 140, 0.06);
+  border-color: var(--cyber-red);
+  border-right-color: var(--cyber-red);
+  background: rgba(255, 42, 95, 0.08);
   transform: translateX(8px);
-  box-shadow: -5px 0 20px rgba(224, 195, 140, 0.1);
+  box-shadow: 0 0 20px rgba(255, 42, 95, 0.2);
 }
 .skill-name {
   font-family: var(--font-serif);
@@ -354,16 +372,16 @@ nav {
   text-transform: uppercase;
   color: var(--red);
   padding: 5px 12px;
-  border: 1px solid rgba(224, 195, 140, 0.3);
-  border-radius: 20px;
-  background: rgba(224, 195, 140, 0.05);
+  border: 1px solid rgba(224, 195, 140, 0.4);
+  background: rgba(224, 195, 140, 0.08);
 }
 
 /* ─── DIVIDER ─── */
 .divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gray-mid), transparent);
+  background: linear-gradient(90deg, transparent, var(--cyber-red), transparent);
   margin: 0 48px;
+  opacity: 0.5;
 }
 
 /* ─── CONTACT ─── */
@@ -379,7 +397,7 @@ nav {
   color: var(--white);
   margin-bottom: 48px;
 }
-.contact-big .accent { color: var(--red); }
+.contact-big .accent { color: var(--red); text-shadow: 0 0 20px rgba(224, 195, 140, 0.3); }
 
 .contact-row {
   display: flex;
@@ -399,9 +417,8 @@ nav {
   color: var(--gray-text);
   text-decoration: none;
   padding: 14px 24px;
-  background: rgba(24, 22, 32, 0.7);
+  background: rgba(18, 16, 24, 0.8);
   border: 1px solid var(--gray-mid);
-  border-radius: 6px;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -409,14 +426,14 @@ nav {
 }
 .contact-link:hover { 
   color: var(--white); 
-  border-color: var(--red);
+  border-color: var(--cyber-red);
   transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px rgba(224, 195, 140, 0.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(255, 42, 95, 0.3);
 }
 .contact-link[href*="discord"]:hover { 
   border-color: #5865F2; 
   color: #5865F2;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px rgba(88, 101, 242, 0.3);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 20px rgba(88, 101, 242, 0.4);
 }
 
 .contact-email {
@@ -432,7 +449,7 @@ nav {
 .contact-email:hover { 
   color: var(--red); 
   transform: translateX(6px);
-  text-shadow: 0 0 15px rgba(224, 195, 140, 0.3);
+  text-shadow: 0 0 20px rgba(224, 195, 140, 0.4);
 }
 
 /* ─── FOOTER ─── */
@@ -444,7 +461,7 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  background: rgba(15, 14, 19, 0.95);
+  background: rgba(8, 7, 12, 0.95);
 }
 footer p {
   font-family: var(--font-mono);
@@ -471,6 +488,7 @@ footer p {
   .nav-left { gap: 10px; }
   .status-badge { font-size: 9px; padding: 3px 8px; }
   .hero { padding: 0 24px 48px; }
+  .hero-hud { inset: 10px; }
   #about { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
   .section { padding: 60px 24px; }
   footer { padding: 24px; }
@@ -484,7 +502,7 @@ footer p {
 
 <body>
 
-<!-- Custom Glowing Cursor -->
+<!-- Custom Cyber Cursor -->
 <div id="custom-cursor"></div>
 
 <div id="progress"></div>
@@ -510,7 +528,7 @@ footer p {
     <source src="montage.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-hud"></div>
 
   <div class="hero-tag">Gamer · Discord Dev · Est. 2026</div>
   <div class="hero-name">PARTH<br>PB<span class="accent">GAMING</span></div>
@@ -612,7 +630,7 @@ footer p {
 </footer>
 
 <script>
-/* CUSTOM GLOWING CURSOR LOGIC */
+/* CUSTOM CURSOR LOGIC */
 const cursor = document.getElementById('custom-cursor');
 document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
@@ -622,7 +640,7 @@ document.addEventListener('mousemove', e => {
 document.querySelectorAll('a, button, .stat-item, .skill-row').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cursor.style.transform = 'translate(-50%, -50%) scale(2.2)';
-    cursor.style.background = 'rgba(224, 195, 140, 0.15)';
+    cursor.style.background = 'rgba(255, 42, 95, 0.15)';
   });
   el.addEventListener('mouseleave', () => {
     cursor.style.transform = 'translate(-50%, -50%) scale(1)';
@@ -687,9 +705,9 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         const v = band1 * 0.55 + band2 * 0.45;
         const lineIntensity = Math.pow(v, 2.5);
 
-        const r = 15 + lineIntensity * (224 - 15); 
-        const g = 14 + lineIntensity * (195 - 14); 
-        const b = 19 + lineIntensity * (140 - 19); 
+        const r = 10 + lineIntensity * (224 - 10); 
+        const g = 8 + lineIntensity * (195 - 8); 
+        const b = 15 + lineIntensity * (140 - 15); 
 
         const i = (y * W + x) * 4;
         d[i]   = r;
